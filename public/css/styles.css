@@ -1,0 +1,31 @@
+body{
+    background-color: #E5DCC3 ;
+}
+
+.footer{
+    background-color: #E5DCC3;
+    color:#9A9483;
+    text-align: center;
+}
+.dream-car{
+    color: white;
+}
+.intro{
+   color:  #9A9483;
+}
+.home-page-cars{
+    margin-top: 20px;
+    border: 1px solid #9A9483;
+    background-color: #9A9483;
+    padding: 0%;
+}
+.car-list{
+    list-style-type: none;
+    margin-right: 50px;
+}
+.list-items{
+    display: inline-block;
+    color: white;
+    background-color: #AAA492;
+    padding: 5px;
+}

@@ -17,12 +17,12 @@ app.set('view engine', 'ejs');
 app.use(express.static("public"));
 
 //Configuring Database Connection
-mongoose.set("strictQuery", true);
-mongoose.connect('mongodb://127.0.0.1:27017/rideHiveDB', {useNewUrlParser:true}).then(()=>{
-    console.log("Successfully connected to Mongo Database")
-}).catch((err)=>{
-    console.log("Couldn't Connect to Mongo Database", err)
-});
+// mongoose.set("strictQuery", true);
+// mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser:true}).then(()=>{
+//     console.log("Successfully connected to Mongo Database")
+// }).catch((err)=>{
+//     console.log("Couldn't Connect to Mongo Database", err)
+// });
 
 //Creating collection schemas
 const userSchema = new mongoose.Schema({
@@ -130,6 +130,6 @@ app.get("/posts", function(req,res){
 });
 
 
-app.listen(3000, function(){
+app.listen(process.env.PORT, function(){
     console.log("Server is running on port 3000");
 })
