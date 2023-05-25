@@ -22,7 +22,6 @@ body{
 .list-items{
     display: inline-block;
     color: white;
-    background-color: #AAA492;
     padding: 5px;
 }
 
@@ -36,6 +35,7 @@ body{
     align-items: center;
     padding: 15px;
     margin-top: 20px;
+    border: 2px #393E46 solid;
 }
 .flex-items{
     flex-basis: 350px;
@@ -117,7 +117,7 @@ color: #EEEEEE;
 color: #EEEEEE;
 font-family: 'Playfair Display', serif;
 }
-.btn {
+.btn-home {
     -webkit-border-radius: 4;
     -moz-border-radius: 4;
     border-radius: 4px;
@@ -130,7 +130,7 @@ font-family: 'Playfair Display', serif;
     text-decoration: none;
   }
   
-  .btn:hover {
+  .btn-home:hover {
     background: #f0f0f0;
     background-image: -webkit-linear-gradient(top, #f0f0f0, #e6e6e6);
     background-image: -moz-linear-gradient(top, #f0f0f0, #e6e6e6);
@@ -156,7 +156,7 @@ font-family: 'Playfair Display', serif;
     max-width: auto;
     background-color: #393E46;
     text-align: center;
-    padding: 100px;
+    padding: 70px;
   }
   .auth-inputs{
     margin-bottom: 50px;
@@ -177,9 +177,47 @@ font-family: 'Playfair Display', serif;
     padding: 10px 40px 10px 40px;
     text-decoration: none;
     width: 100%;
+    margin-bottom: 20px;
   }
   
   .btn-auth:hover {
     background: #a3a0a3;
     text-decoration: none;
+  }
+
+  .car-detail{
+    color: #00ADB5;
+  }
+  .comments-section > li {
+    padding-right: 20px;
+  }
+  .advanced-search{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+  }
+  .search-items{
+    flex-basis: auto;
+    padding: 50px;
+    background-color: #393E46;
+  }
+  .search-container{
+    display: none;
+    justify-content: center; 
+    align-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    flex-shrink: 1;
+    margin-top: 10px;
+    backdrop-filter: blur(5px);
+  }
+  select > #carBrand #fuelType{
+    margin-bottom: 50px;
+    border: 1px #222831 solid;
+    font-family:'Playfair Display', serif;
+    background-color: #222831;
+    padding: 5px;
+    color: #EEEEEE;
   }

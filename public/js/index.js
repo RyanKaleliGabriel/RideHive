@@ -7,3 +7,13 @@ function getFullYear(){
     yearElement.innerHTML = "CopyRight @"+dateObject;
 }
 getFullYear();
+
+//Advanced SearchPopup
+document.getElementById("advancedSearch").addEventListener("click", function(){
+    document.getElementById("searchContainer").style.display="flex";
+    document.getElementById("advancedSearch").style.display="none"
+})
+document.getElementById("cancelButton").addEventListener("click", function(){
+    document.getElementById("searchContainer").style.display="none"
+    document.getElementById("advancedSearch").style.display="flex"
+})

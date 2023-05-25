@@ -1,5 +1,5 @@
 <%- include("partials/auth-header") %>
-<h1 style="color: #EEEEEE; text-align: center; font-family: 'Playfair Display', serif;">Sign Ip</h1>
+<h1 style="color: #EEEEEE; text-align: center; font-family: 'Playfair Display', serif;">Sign In</h1>
     <div class="auth-container">
         <div class="auth-items">
             <h5 style="color: #00ADB5; text-align: left; font-family: 'Raleway', sans-serif;">Welcome to RideHive</h5>
@@ -10,8 +10,15 @@
                 <br/>
                 <button class="btn-auth" type="submit" id="submitButton">Sign In</button>
             </form>
-            <p style="color:#EEEEEE; text-align: center; font-family: 'Raleway', sans-serif; margin-top: 20px;">Don't have an account?</p><a href="/register" style="text-decoration: none; color: #EEEEEE;"><span>Sign Up</span></a>
+            <div>
+                <a href="" role="button" class="btn btn-google">
+                    <i class="fa-brands fa-google"></i>
+                    Sign In With Google
+                </a>
+                </div>
+            <div>
+            <p style="color:#EEEEEE; text-align: center; font-family: 'Raleway', sans-serif; margin-top: 20px;">Don't have an account?<a href="/register" style="text-decoration: none; color: #00ADB5;"> Sign Up</a></p>
+            </div>
         </div>
     </div>
-</body>
-</html>
+    <%- include("partials/auth-footer") %>

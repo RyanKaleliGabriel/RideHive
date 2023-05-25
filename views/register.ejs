@@ -13,8 +13,16 @@
                 <br/>
                 <button class="btn-auth" type="submit" id="submitButton">Sign Up</button>
             </form>
-            <p style="color:#EEEEEE; text-align: center; font-family: 'Raleway', sans-serif; margin-top: 20px;">Already have an account?</p><a href="/login" style="text-decoration: none; color: #EEEEEE;"><span>Sign in</span></a>
+            <div>
+                <a href="" role="button" class="btn btn-light  btn-google">
+                    <i class="fa-brands fa-google"></i>
+                    Sign Up With Google
+                </a>
+                </div>
+            <div>
+            <p style="color:#EEEEEE; text-align: center; font-family: 'Raleway', sans-serif; margin-top: 20px;">Already have an account?<a href="/login" style="text-decoration: none; color: #00ADB5;"> Sign in</a></p>
+            </div>
         </div>
+
     </div>
-</body>
-</html>
+    <%- include("partials/auth-footer") %>

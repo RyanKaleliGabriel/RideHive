@@ -10,6 +10,8 @@ const carsSchema = new mongoose.Schema({
     secondName:{type: String},
     year: {type: Number},
     engineCapacity: {type: Number},
+    torque: {type: Number},
+    horsepower: {type: Number},
     transmission: {type: String},
     fuelType:{type: String},
     description:{type: String},
