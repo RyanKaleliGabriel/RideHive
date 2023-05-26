@@ -101,10 +101,15 @@ app.get("/edit", function (req, res) {
   res.render("edit");
 });
 
-//One Car Page
-app.get("/car", function (req, res) {
+//All Car Page
+app.get("/cars", function (req, res) {
   console.log("This Page should be showing");
-  res.render("car");
+  res.render("cars");
+});
+
+//One Car Page
+app.get("/car", function(req,res){
+  res.render("car")
 });
 
 //Register Route

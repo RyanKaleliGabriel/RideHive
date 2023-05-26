@@ -1,0 +1,58 @@
+<%- include('partials/header')  %>
+    <!-- Home Page Cars -->
+    
+    <div class="advanced-search">
+      <button onclick="showSearcWindow()" id="advancedSearch" class="btn-home"> Advanced Search</button>
+    </div>
+    <div id="searchContainer" class="search-container">
+      <div class="search-items">
+        <h2 style="color: white;">Advanced Search</h2><br/>
+      <form>
+        <input type="text" placeholder="Car Name" class="auth-inputs" autocomplete="none">
+        <br/>
+        <select name="carBrand" id="carBrand">
+          <option value="" disabled selected hidden> Brand</option>
+          <option value="">Mercedes</option>
+          <option value="">Audi</option>
+          <option value="">BMW</option>
+          <option value="">Toyota</option>
+        </select>
+        <select name="fuelType" id="fuelType">
+          <option value="" disabled selected hidden>Fuel Type</option>
+          <option value="">Manual</option>
+          <option value="">Automatic</option>
+        </select>
+        <br/>
+        <input type="text" placeholder="Year" class="auth-inputs" autocomplete="none"><br/>
+        <input type="text" placeholder="Engine Capacity" class="auth-inputs" autocomplete="none"><br>
+        <input type="text" placeholder="Transmission" class="auth-inputs" autocomplete="none"><br>
+        <button class="btn-auth" type="submit" id="submitButton"><i class="fa-solid fa-magnifying-glass" style="padding-right:3px ;"></i>Search</button>
+        <button onclick="closeSearchWindow()" class="btn-auth" type="submit" id="cancelButton">Cancel</button>
+      </form>
+    </div>
+    </div>
+    <div class="container animate__animated animate__backInUp">
+        <div class="flex-items">
+          <img class="car-img" src="uploads/2015_mercedes-benz_s550_20220826-120.jpeg" alt="" style="width: 100%; height: 50%; text-align: center;"/>
+        </div>
+        <div class="flex-items">
+          <ul class="car-list">
+          <h4 style="color: white;"><span>Year</span> Car Name</h4>
+          <li class="list-items">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent at justo ac enim rutrum accumsan. Cras sit amet justo a ex tincidunt dapibus sed eu dolor. Sed in ligula et turpis posuere hendrerit et vitae lorem.</li>
+          <li class="list-items">Transmission: <span class="car-detail">Manual</span></li>
+          <li class="list-items">Engine Capacity: <span class="car-detail">2000 CC</span></li>
+          <li class="list-items">Torque: <span class="car-detail">350</span></li>
+          <li class="list-items">Horse Power: <span class="car-detail">211</span></li>
+          <li class="list-items">Fuel: <span class="car-detail">Petrol</span></li>
+         </ul>
+          <ul class="car-list comments-section">
+            <li class="list-items"><i class="fa-regular fa-comment"></i></li>
+            <li class="list-items"><i class="fa-solid fa-exclamation"></i></li>
+            <li class="list-items"><i class="fa-regular fa-heart"></i></li><br>
+            <a href="/car" class="btn-more-details">Car Details</a>
+          </ul>
+        </div>
+      </div>
+
+<!-- Home Page Cars -->
+<%- include('partials/footer')  %>
