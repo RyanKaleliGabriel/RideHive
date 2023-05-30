@@ -42,7 +42,6 @@ body{
     border: 1px #222831 solid;
     margin-top: 10px;
     background-color: #222831 ;
-    
 }
 .flex-items > h4{
     text-align: left; 
@@ -201,6 +200,7 @@ font-family: 'Playfair Display', serif;
     flex-basis: auto;
     padding: 50px;
     background-color: #393E46;
+    
   }
   .search-container{
     display: none;
@@ -257,6 +257,11 @@ font-family: 'Playfair Display', serif;
     flex-basis: auto;
     padding: 50px;
     background-color: #393E46;
+  }
+  .cancel-mark{
+    float: right;
+    background-color: #393E46;
+    border: none;
   }
  
   

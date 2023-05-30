@@ -1,5 +1,25 @@
 <%- include('partials/header')  %>
     <!-- Home Page Cars -->
+    <div id="commentContainer" class="comment-container">
+      <div class="comment-items">
+        <form action="">
+          <h5 style="color: white; text-align: center;">Say something on this car</h5>
+          <textarea placeholder="Comment your Reply!" name="" id="" cols="30" rows="10"></textarea>
+          <br>
+          <button class="btn-more-details">Comment</button>
+        </form>
+      </div>
+    </div>
+    <div id="issueContainer" class="comment-container">
+      <div class="comment-items">
+        <form action="">
+          <h5 style="color: white; text-align: center;">Any Problem with this car?</h5>
+          <textarea placeholder="Comment your issue!" name="" id="" cols="30" rows="10"></textarea>
+          <br>
+          <button class="btn-more-details">Comment Issue</button>
+        </form>
+      </div>
+    </div>
     
     <div class="container animate__animated animate__backInUp">
       <div class="flex-items">
@@ -17,20 +37,11 @@
        </ul>
         <ul class="car-list comments-section">
           <button onclick="showCommentWindow()" class="btn-interact" id="commentPopup"><li class="list-items"><i class="fa-regular fa-comment"></i></li></button>
-          <button class="btn-interact" id=""><li class="list-items"><i class="fa-solid fa-exclamation"></i></li></button>
+          <button onclick="showIssueWindow()" class="btn-interact" id="issuePopup"><li class="list-items"><i class="fa-solid fa-exclamation"></i></li></button>
           <button class="btn-interact" id=""><li class="list-items"><i class="fa-regular fa-heart"></i></li><br></button>
         </ul>
       </div>
     </div>
-    <div id="commentContainer" class="comment-container">
-      <div class="comment-items">
-        <form action="">
-          <textarea placeholder="Commeny your Reply!" name="" id="" cols="30" rows="10"></textarea>
-          <br>
-          <button class="btn-more-details">Comment</button>
-        </form>
-      </div>
 
-    </div>
 <!-- Home Page Cars -->
 <%- include('partials/footer')  %>

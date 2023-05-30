@@ -2,10 +2,11 @@
     <!-- Home Page Cars -->
     
     <div class="advanced-search">
-      <button onclick="showSearcWindow()" id="advancedSearch" class="btn-home"> Advanced Search</button>
+      <button onclick="showSearchWindow()" id="advancedSearch" class="btn-home"> Advanced Search</button>
     </div>
     <div id="searchContainer" class="search-container">
       <div class="search-items">
+        
         <h2 style="color: white;">Advanced Search</h2><br/>
       <form>
         <input type="text" placeholder="Car Name" class="auth-inputs" autocomplete="none">
@@ -27,7 +28,7 @@
         <input type="text" placeholder="Engine Capacity" class="auth-inputs" autocomplete="none"><br>
         <input type="text" placeholder="Transmission" class="auth-inputs" autocomplete="none"><br>
         <button class="btn-auth" type="submit" id="submitButton"><i class="fa-solid fa-magnifying-glass" style="padding-right:3px ;"></i>Search</button>
-        <button onclick="closeSearchWindow()" class="btn-auth" type="submit" id="cancelButton">Cancel</button>
+        <button onclick="closeSearchWindow()" class="btn-auth" type="submit" id="cancelButton">Close</button>
       </form>
     </div>
     </div>
@@ -46,9 +47,6 @@
           <li class="list-items">Fuel: <span class="car-detail">Petrol</span></li>
          </ul>
           <ul class="car-list comments-section">
-            <li class="list-items"><i class="fa-regular fa-comment"></i></li>
-            <li class="list-items"><i class="fa-solid fa-exclamation"></i></li>
-            <li class="list-items"><i class="fa-regular fa-heart"></i></li><br>
             <a href="/car" class="btn-more-details">Car Details</a>
           </ul>
         </div>

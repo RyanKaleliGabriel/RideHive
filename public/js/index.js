@@ -1,6 +1,7 @@
 const commentButton = document.getElementById("commentPopup");
 const searchButton = document.getElementById("advancedSearch");
 const closeSearchButton = document.getElementById("cancelButton");
+const issuesButton = document.getElementById("issuePopup")
 //Function to get Full Year
 function getFullYear(){
     var dateObj = new Date();
@@ -16,16 +17,24 @@ function showCommentWindow(){
     event.preventDefault();
     document.getElementById("commentContainer").style.display="flex"
 });
-
 }
-function showSearcWindow(){
+
+function showIssueWindow(){
+    issuesButton.addEventListener("click", function(event){
+        event.preventDefault();
+        document.getElementById("issueContainer").style.display="flex"
+    });
+}
+
+
+function showSearchWindow(){
     searchButton.addEventListener("click", function(event){
     event.preventDefault();
     document.getElementById("searchContainer").style.display="flex";
     document.getElementById("advancedSearch").style.display="none"
 });
-
 }
+
 function closeSearchWindow(){
     closeButton.addEventListener("click", function(event){
     event.preventDefault();
