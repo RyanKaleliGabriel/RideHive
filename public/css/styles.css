@@ -263,5 +263,64 @@ font-family: 'Playfair Display', serif;
     background-color: #393E46;
     border: none;
   }
- 
-  
+  #adminHeader{
+    background-color: #393E46;
+    text-align: center;
+    color: white;
+    clear: both;
+  }
+
+  #adminFooter{
+    background-color: #393E46;
+    text-align: center;
+    color: white;
+    clear: both;
+  }
+  .admin-class{
+    display: inline-block;
+  }
+  #adminContent{
+    float: right;
+    background-color: #393E46;
+    width: 81%;
+    padding: 10px;
+  }
+  #adminMenu{
+    float: left;
+    background-color: #393E46;
+    width: 18%;
+    padding: 10px;
+    margin-right: 2px;
+    margin-bottom: 2px;
+    
+  }
+
+.dashbord-elements{
+  background-color: #222831;
+  height: 35px;
+  width:90%;
+  margin-top: 55px;
+  text-align: center;
+  padding: 5px;
+  color: white;
+}
+.admin-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  flex-shrink: 1;
+  justify-content: space-evenly;
+  align-content: center;
+}
+.admin-items{
+  flex-basis: 40%;
+  background-color: #222831;
+  color: white;
+  margin-bottom: 10px;
+  padding: 20px;
+  text-align: center;
+}
+.right-arrow{
+  float: right;
+}
