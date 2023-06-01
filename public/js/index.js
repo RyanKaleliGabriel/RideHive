@@ -44,33 +44,10 @@ function closeSearchWindow(){
 }
 
 
-// document.addEventListener('click', function(event){
-//     if(event.target && event.target.id === commentButton){
-//         showCommentWindow();
-//     }else if(event.target && event.target.id === searchButton){
-//         showSearcWindow();
-//     }else if(event.target && event.target.id === closeSearchButton){
-//         closeSearchWindow();
-//     }
-// });
-
-// function clickedButton(selectedButton){
-//     if(selectedButton === commentButton){
-//         selectedButton.addEventListener("click", function(event){
-//             document.getElementById("commentContainer").style.display="flex"
-//         });
-//     }else if(selectedButton === searchButton){
-//         selectedButton.addEventListener("click", function(event){
-//             document.getElementById("searchContainer").style.display="flex";
-//             document.getElementById("advancedSearch").style.display="none"
-//         });
-//     }else if(selectedButton === closeButton){
-//         searchButton.addEventListener("click", function(event){
-//             document.getElementById("searchContainer").style.display="none"
-//             document.getElementById("advancedSearch").style.display="flex"
-//         });
-//     }
-// }
+function toggleMenu(){
+    var menu = document.getElementById("adminMenu")
+    menu.classList.toggle('show');
+}
 
 
 

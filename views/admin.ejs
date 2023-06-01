@@ -16,19 +16,25 @@
 
 <body>
    <header id="adminHeader">
-    <p>This is the Header</p>
+    <button class="nav-btn" onclick="toggleMenu()"><img class="nav-icon" src="uploads/icons8-hamburger-menu-50.png"></button>
+    <a class="navbar-brand" href="#" style="color: #EEEEEE; font-family: 'Playfair Display', serif;">RideHive</a>
+    <a href="/login">
+        <i class="fa-solid fa-user" style="color: #EEEEEE; margin-bottom: 5px; color: white; float: right;"></i>
+    </a>
    </header>
-
    <div class="admin-class" id="adminMenu">
-    <p class="dashbord-elements">Dashboard</p>
-    <p class="dashbord-elements">Brands</p>
-    <p class="dashbord-elements">Cars</p>
-    <p class="dashbord-elements">Admins</p>
-    <p class="dashbord-elements">Comments</p>
-    <p class="dashbord-elements">Issues</p>
+    <h4 style="color: #EEEEEE; font-family: 'Playfair Display', serif; text-align: center;">Admin Menu</h4>
+    <hr style="color: #EEEEEE;">
+    <button class="dashbord-elements" onclick="showDashboard()">DashBoard</button>
+    <button class="dashbord-elements" onclick="showBrands()">Brands</button>
+    <button class="dashbord-elements" onclick="showCars()">Cars</button>
+    <button class="dashbord-elements" onclick="showAdmins()">Admins</button>
+    <button class="dashbord-elements" onclick="showComments()">Comments</button>
+    <button class="dashbord-elements" onclick="showIssues()">Issues</button>
    </div>
-   <div class="admin-class" id="adminContent">
 
+<!-- Admin Dashboard -->
+   <div class="admin-class" id="adminContent">
     <div class="admin-container">
         <div class="admin-items" id="Cars">
             <p>Cars Stats</p>
@@ -37,8 +43,6 @@
                 <li>Number of Units</li>
                 <li>Anything Else associated With it</li>
             </ul>
-        
-            <i class="right-arrow fa-solid fa-arrow-right"></i>
         </div>
         <div class="admin-items" id="Users">
             <p>Users Stats</p>
@@ -47,8 +51,6 @@
                 <li>Number of Units</li>
                 <li>Anything Else associated With it</li>
             </ul>
-        
-            <i class="right-arrow fa-solid fa-arrow-right"></i>
         </div>
         <div class="admin-items" id="Brands">
             <p>Brands Stats</p>
@@ -57,7 +59,6 @@
                 <li>Number of Units</li>
                 <li>Anything Else associated With it</li>
             </ul>
-            <i class="right-arrow fa-solid fa-arrow-right"></i>
         </div>
         <div class="admin-items" id="Admins">
             <p>Admin Stats</p>
@@ -66,8 +67,6 @@
                 <li>Number of Units</li>
                 <li>Anything Else associated With it</li>
             </ul>
-        
-            <i class="right-arrow fa-solid fa-arrow-right"></i>
         </div>
         <div class="admin-items" id="Comments">
             <p>Comments Stats</p>
@@ -76,8 +75,6 @@
                 <li>Number of Units</li>
                 <li>Anything Else associated With it</li>
             </ul>
-        
-            <i class="right-arrow fa-solid fa-arrow-right"></i>
         </div>
         <div class="admin-items" id="Issues">
             <p>Issues Stats</p>
@@ -86,19 +83,59 @@
                 <li>Number of Units</li>
                 <li>Anything Else associated With it</li>
             </ul>
-        
-            <i class="right-arrow fa-solid fa-arrow-right"></i>
         </div>
-
     </div>
    </div>
+<!-- Admin Dashboard -->
+
+
+<!-- Brands Posted -->
+<div class="brand-class" id="brandContent">
+    <div class="system-container">
+        <h4>Brands</h4>
+        <div class="system-items" id="brands">
+            <hr>
+            <ol start="1" class="brand-items">
+                <li style="  font-family: Arial; color: #00ADB5;">Toyota</li>
+                <Button class="edit-delete-btns">Edit</Button>
+                <Button class="edit-delete-btns">Delete</Button>
+            </ol>
+            <hr>
+        </div>
+    </div>
+</div>
+<!-- Brands Posted -->
+
+<!-- Cars Posted -->
+<div class="admin-class" id="adminContent">
+    <div class="system-container">
+        <div class="system-items">
+        </div>
+    </div>
+</div>
+<!-- Cars Posted -->
+
+<!-- Users Posted -->
+<div class="admin-class" id="adminContent">
+    <div class="system-container">
+        <div class="system-items">
+        </div>
+    </div>
+</div>
+<!-- Users Posted -->
+
+<!-- AdminsPosted -->
+<div class="admin-class" id="adminContent">
+    <div class="system-container">
+        <div class="system-items">
+        </div>
+    </div>
+</div>
+<!-- AdminsPosted -->
    <footer id="adminFooter">
-    This is the footer
+        <p id="year"></p>
    </footer>
 </body>
-
-
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/eac2918891.js" crossorigin="anonymous"></script>
 <script src="js/index.js"></script>

@@ -268,22 +268,26 @@ font-family: 'Playfair Display', serif;
     text-align: center;
     color: white;
     clear: both;
+    padding: 10px;
+    margin-bottom: 15px;
   }
 
   #adminFooter{
-    background-color: #393E46;
+    background-color: #222831;
     text-align: center;
     color: white;
     clear: both;
+    margin-top: 15px;
   }
-  .admin-class{
+  .admin-class, .brand-class{
     display: inline-block;
   }
-  #adminContent{
+  #adminContent, #brandContent{
     float: right;
     background-color: #393E46;
     width: 81%;
     padding: 10px;
+    margin-bottom: 10px;
   }
   #adminMenu{
     float: left;
@@ -292,17 +296,18 @@ font-family: 'Playfair Display', serif;
     padding: 10px;
     margin-right: 2px;
     margin-bottom: 2px;
-    
+    height: 100%;
   }
-
 .dashbord-elements{
   background-color: #222831;
   height: 35px;
   width:90%;
-  margin-top: 55px;
+  margin-top: 35px;
   text-align: center;
   padding: 5px;
-  color: white;
+  font-family: Arial;
+  color: #00ADB5;
+  border: none;
 }
 .admin-container{
   display: flex;
@@ -316,11 +321,97 @@ font-family: 'Playfair Display', serif;
 .admin-items{
   flex-basis: 40%;
   background-color: #222831;
-  color: white;
   margin-bottom: 10px;
   padding: 20px;
   text-align: center;
+  color: #EEEEEE; 
+  font-family: 'Playfair Display', serif;
 }
-.right-arrow{
+.admin-items > p{
+  font-family: Arial;
+  color: #00ADB5;
+}
+.admin-items > li{
+  text-decoration: none;
+
+}
+.nav-btn{
+  display: none;
+  float: left;
+  background-color: #393E46;
+  border: none;
+}
+.nav-icon{
+  width: 50%;
+  height: 50%;
+}
+
+.system-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: center;
+  flex-wrap: wrap;
+  flex-grow:1 ;
+  flex-shrink: 1;
+}
+.system-items{
+  flex-basis: 40%;
+  color: #EEEEEE; 
+  font-family: 'Playfair Display', serif;
+  background-color: #222831;
+  padding: 20px;
+  width: 87%;
+  display: inline-block;
+}
+.system-container > h4{
+  color: #EEEEEE; 
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+}
+
+#brands{
+  text-align: start;
+}
+.brand-items{
+  list-style-type: none;
+}
+.brand-items li{
+  display: inline-block;
+}
+.edit-delete-btns{
+  border: none;
+  color: #EEEEEE; 
+  font-family: 'Playfair Display', serif;
+  background-color: #393E46;
   float: right;
+  margin-right: 10px;
+}
+@media (max-width: 1024px) {
+  #adminMenu{
+    display: none;
+  }
+  #adminMenu.show{
+    display: flex;
+  }
+  #adminContent, #brandContent{
+    width: 100%;
+  }
+  .nav-btn{
+    display: inline-block;
+  }
+}
+@media (max-width: 768px){
+  #adminMenu{
+    display: none;
+  }
+  #adminMenu.show{
+    display: flex;
+  }
+  #adminContent{
+    width: 100%;
+  }
+  .nav-icon{
+    display: inline;
+  }
 }
