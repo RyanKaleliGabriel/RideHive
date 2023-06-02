@@ -1,0 +1,24 @@
+<%- include("partials/admin-header.ejs") %>
+
+<!-- Cars Posted -->
+<div class="brand-class" id="carContent">
+    <select class="admin-select" onchange="window.location.href=this.value;">
+        <option value="" disabled selected hidden> Cars</option>
+        <option value="/post">Post</option>
+    </select>
+    <div class="system-container">
+        <div class="system-items">
+            <hr>
+            <img class="car-admin-img" src="uploads/2015_mercedes-benz_s550_20220826-120.jpeg" alt=""/>
+                <p class="car-admin-details" style="font-family: Arial; color: #00ADB5;">Year Car Name</p> 
+                <p class="car-admin-details">Curabitur est mauris, maximus a sapien quis, porta molestie libero. Quisque vel sem pulvinar, aliquam risus id, luctus mi. Proin nec pharetra est. Fusce consequat mi neque, eget tincidunt magna faucibus sed. Donec lobortis felis nec mi dictum, ac viverra sapien porttitor. Morbi pharetra orci eget nunc porta iaculis quis sit amet nulla. Curabitur id pellentesque est.</p>
+                <p class="car-admin-details">Posted By: Admin</p><br>
+                <Button class="edit-delete-btns">Edit</Button>
+                <Button class="edit-delete-btns">Delete</Button>
+        </div>
+    </div>
+</div>
+<!-- Cars Posted -->
+
+
+<%- include("partials/admin-footer.ejs") %>

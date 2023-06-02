@@ -1,0 +1,24 @@
+<%- include("partials/admin-header.ejs") %>
+
+<!-- AdminsPosted -->
+<div class="brand-class" id="adminContent">
+    <div class="system-container">
+        <select class="admin-sections-headings" onchange="window.location.href=this.value;">
+            <option value="" disabled selected hidden> Admins</option>
+            <option value="/post">Post</option>
+        </select>
+        <div class="system-items" id="brands">
+            <hr>
+            <ol start="1" class="brand-items">
+                <li class="list-admin-names">Kaleli Gabriel</li>
+                <li class="list-admin-mails">ka@gmail.com</li>
+                <Button class="edit-delete-btns">Edit</Button>
+                <Button class="edit-delete-btns">Delete</Button>
+            </ol>
+            <hr>
+        </div>
+    </div>
+</div>
+<!-- AdminsPosted -->
+
+<%- include("partials/admin-footer.ejs") %>

@@ -258,11 +258,6 @@ font-family: 'Playfair Display', serif;
     padding: 50px;
     background-color: #393E46;
   }
-  .cancel-mark{
-    float: right;
-    background-color: #393E46;
-    border: none;
-  }
   #adminHeader{
     background-color: #393E46;
     text-align: center;
@@ -271,7 +266,6 @@ font-family: 'Playfair Display', serif;
     padding: 10px;
     margin-bottom: 15px;
   }
-
   #adminFooter{
     background-color: #222831;
     text-align: center;
@@ -279,24 +273,15 @@ font-family: 'Playfair Display', serif;
     clear: both;
     margin-top: 15px;
   }
-  .admin-class, .brand-class{
+  .brand-class, .admin-class{
     display: inline-block;
   }
-  #adminContent, #brandContent{
+   #adminContent, #brandContent, #carContent, #userContent, #adminContent{
     float: right;
     background-color: #393E46;
-    width: 81%;
+    width: 100%;
     padding: 10px;
     margin-bottom: 10px;
-  }
-  #adminMenu{
-    float: left;
-    background-color: #393E46;
-    width: 18%;
-    padding: 10px;
-    margin-right: 2px;
-    margin-bottom: 2px;
-    height: 100%;
   }
 .dashbord-elements{
   background-color: #222831;
@@ -333,7 +318,6 @@ font-family: 'Playfair Display', serif;
 }
 .admin-items > li{
   text-decoration: none;
-
 }
 .nav-btn{
   display: none;
@@ -345,7 +329,6 @@ font-family: 'Playfair Display', serif;
   width: 50%;
   height: 50%;
 }
-
 .system-container{
   display: flex;
   flex-direction: column;
@@ -364,17 +347,20 @@ font-family: 'Playfair Display', serif;
   width: 87%;
   display: inline-block;
 }
-.system-container > h4{
+.admin-sections-headings{
   color: #EEEEEE; 
-  font-family: 'Playfair Display', serif;
-  text-align: center;
-}
-
-#brands{
   text-align: start;
+  font-family: 'Playfair Display', serif;
+  background-color: #393E46; border: none; font-size: 1.5rem; margin-bottom: 5px;
 }
-.brand-items{
-  list-style-type: none;
+.admin-dropdown-menu{
+  float: left;
+  font-family: 'Playfair Display', serif;
+  color: #EEEEEE;
+  background-color: #393E46; border: none; font-size: 1rem; margin-bottom: 5px;
+}
+#brands {
+  text-align: start;
 }
 .brand-items li{
   display: inline-block;
@@ -386,6 +372,43 @@ font-family: 'Playfair Display', serif;
   background-color: #393E46;
   float: right;
   margin-right: 10px;
+}
+.car-admin-img{
+  width: 20%;
+  height: 10%; 
+  text-align: center;
+  float: left;
+}
+.car-admin-details{
+  float: right;
+}
+.list-admin-mails{
+  margin-left: 15rem;
+}
+.list-admin-names{
+  font-family: Arial; color: #00ADB5;
+}
+.post-btn{
+  margin-left: 4rem;
+}
+.admin-select{
+  margin-left: 4.2rem; color: #EEEEEE; font-family: 'Playfair Display', serif; background-color: #393E46; border: none; font-size: 1.5rem; margin-bottom: 5px;
+}
+.car-form-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-content: center;
+  flex-grow: 1;
+  flex-shrink: 1;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+.car-form-items{
+  flex-basis: auto;
+  background-color: #393E46;
+  padding: 15px;
 }
 @media (max-width: 1024px) {
   #adminMenu{

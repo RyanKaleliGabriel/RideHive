@@ -136,6 +136,34 @@ app.get("/posts", function (req, res) {
   res.render("post");
 });
 
+//Brands Car(Admin) Route
+app.get("/brands", function (req, res) {
+  console.log("This Page should be showing");
+  res.render("brands");
+});
+// Car(Admin) Route
+app.get("/car-admin", function (req, res) {
+  console.log("This Page should be showing");
+  res.render("car-admin");
+});
+// Admin Users(Admin) Route
+app.get("/admin-users", function (req, res) {
+  console.log("This Page should be showing");
+  res.render("admin-users");
+});
+//  Users(Admin) Route
+app.get("/users", function (req, res) {
+  console.log("This Page should be showing");
+  res.render("users");
+});
+//  Post(Admin) Route
+app.get("/post", function (req, res) {
+  console.log("This Page should be showing");
+  res.render("post");
+});
+
+
+
 app.listen(process.env.PORT, function () {
   console.log("Server is running on port 3000");
 });

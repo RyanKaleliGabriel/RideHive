@@ -1,0 +1,23 @@
+<%- include("partials/admin-header.ejs") %>
+
+<!-- Brands Posted -->
+<div class="brand-class" id="brandContent">
+    <div class="system-container">
+        <select class="admin-sections-headings" onchange="window.location.href=this.value;">
+            <option value="" disabled selected hidden> Brands</option>
+            <option value="/post">Post</option>
+        </select>
+        <div class="system-items" id="brands">
+            <hr>
+            <ol start="1" class="brand-items">
+                <li style="font-family: Arial; color: #00ADB5;">Toyota</li>
+                <Button class="edit-delete-btns">Edit</Button>
+                <Button class="edit-delete-btns">Delete</Button>
+            </ol>
+            <hr>
+        </div>
+    </div>
+</div>
+<!-- Brands Posted -->
+
+<%- include("partials/admin-footer.ejs") %>

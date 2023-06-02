@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Raleway&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+
+<body>
+   <header id="adminHeader">
+    <!-- <button class="nav-btn" onclick="toggleMenu()"><img class="nav-icon" src="uploads/icons8-hamburger-menu-50.png"></button> -->
+    <select class="admin-dropdown-menu" onchange="window.location.href= this.value;">
+        <option value="" disabled selected hidden> Admin Menu</option>
+        <option value="/admin">Dashboard</option>
+        <option value="/brands">Brands</option>
+        <option value="/car-admin">Cars</option>
+        <option value="/admin-users">Admins</option>
+        <option value="/users">Users</option>
+    </select>
+    <a class="navbar-brand" href="#" style="color: #EEEEEE; font-family: 'Playfair Display', serif;">RideHive</a>
+    <a href="/login">
+        <i class="fa-solid fa-user" style="color: #EEEEEE; margin-bottom: 5px; color: white; float: right;"></i>
+    </a>
+   </header>

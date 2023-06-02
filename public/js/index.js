@@ -2,6 +2,7 @@ const commentButton = document.getElementById("commentPopup");
 const searchButton = document.getElementById("advancedSearch");
 const closeSearchButton = document.getElementById("cancelButton");
 const issuesButton = document.getElementById("issuePopup")
+
 //Function to get Full Year
 function getFullYear(){
     var dateObj = new Date();
@@ -42,7 +43,6 @@ function closeSearchWindow(){
     document.getElementById("advancedSearch").style.display="flex"
 });
 }
-
 
 function toggleMenu(){
     var menu = document.getElementById("adminMenu")
