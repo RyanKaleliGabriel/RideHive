@@ -27,7 +27,6 @@ function showIssueWindow(){
     });
 }
 
-
 function showSearchWindow(){
     searchButton.addEventListener("click", function(event){
     event.preventDefault();

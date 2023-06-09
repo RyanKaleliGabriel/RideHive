@@ -5,6 +5,9 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const multer = require("multer");
 require("dotenv").config();
+const session = require('express-session');
+const passport = require("passport");
+const passportLocalMongoose = require("passport-local-mongoose");
 
 //All External models that have image uploads
 const Brand = require("./filemodels/brands");
@@ -16,21 +19,26 @@ app.use(bodyParser.urlencoded({ urlencoded: true }));
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 
-//Configuring Database Connection
-// mongoose.set("strictQuery", true);
-// mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser:true}).then(()=>{
-//     console.log("Successfully connected to Mongo Database")
-// }).catch((err)=>{
-//     console.log("Couldn't Connect to Mongo Database", err)
-// });
+app.use(session({
+  secret:"Our little secret.",
+  resave:false,
+  saveUninitialized:false 
+})); 
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Configuring Database Connection
+mongoose.set("strictQuery", true);
+mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser:true}).then(()=>{
+    console.log("Successfully connected to Mongo Database")
+}).catch((err)=>{
+    console.log("Couldn't Connect to Mongo Database", err)
+});
 
 //Creating collection schemas
 const userSchema = new mongoose.Schema({
-  fullNames: {
-    type: String,
-    required: true,
-  },
-  userName: {
+  username: {
     type: String,
     required: true,
   },
@@ -51,8 +59,27 @@ const userSchema = new mongoose.Schema({
   Comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],
   UserWishList: { type: mongoose.Schema.Types.ObjectId, ref: "WishList" },
 });
+
+userSchema.plugin(passportLocalMongoose);
 //Model for Users Schema
 const User = new mongoose.model("User", userSchema);
+
+passport.use(User.createStrategy());
+passport.serializeUser(function(user, cb) {
+  process.nextTick(function() {
+    return cb(null, {
+      id: user.id,
+      username: user.username,
+      picture: user.picture
+    });
+  });
+});
+
+passport.deserializeUser(function(user, cb) {
+  process.nextTick(function() {
+    return cb(null, user);
+  });
+});
 
 //Issues schema
 const issueSchema = new mongoose.Schema({
@@ -85,26 +112,23 @@ const WishList = new mongoose.model("WishList", wishlistSchema);
 
 //Home Route
 app.get("/", function (req, res) {
-  console.log("This Page should be showing");
-  res.render("home");
-});
-
-//About Page Route
-app.get("/about", function (req, res) {
-  console.log("This Page should be showing");
-  res.render("about");
+  res.render("home")
 });
 
 //Edit Route
 app.get("/edit", function (req, res) {
-  console.log("This Page should be showing");
+  
   res.render("edit");
 });
 
 //All Car Page
 app.get("/cars", function (req, res) {
-  console.log("This Page should be showing");
-  res.render("cars");
+  if(req.isAuthenticated()){
+    res.render("cars");
+  }else{
+    redirect("/login");
+  }
+  
 });
 
 //One Car Page
@@ -114,53 +138,82 @@ app.get("/car", function(req,res){
 
 //Register Route
 app.get("/register", function (req, res) {
-  console.log("This Page should be showing");
-  res.render("register");
+  res.render("register")
 });
 
 //Login Route
 app.get("/login", function (req, res) {
-  console.log("This Page should be showing");
   res.render("login");
 });
 
 //Admins Page
 app.get("/admin", function (req, res) {
-  console.log("This Page should be showing");
+  
   res.render("admin");
 });
 
 //Post Car(Admin) Route
 app.get("/posts", function (req, res) {
-  console.log("This Page should be showing");
+  
   res.render("post");
 });
 
 //Brands Car(Admin) Route
 app.get("/brands", function (req, res) {
-  console.log("This Page should be showing");
+  
   res.render("brands");
 });
 // Car(Admin) Route
 app.get("/car-admin", function (req, res) {
-  console.log("This Page should be showing");
+  
   res.render("car-admin");
 });
 // Admin Users(Admin) Route
 app.get("/admin-users", function (req, res) {
-  console.log("This Page should be showing");
+  
   res.render("admin-users");
 });
 //  Users(Admin) Route
 app.get("/users", function (req, res) {
-  console.log("This Page should be showing");
+  
   res.render("users");
 });
 //  Post(Admin) Route
 app.get("/post", function (req, res) {
-  console.log("This Page should be showing");
   res.render("post");
 });
+
+
+app.post("/register", function(req,res){
+  User.register({username:req.body.username, email:req.body.email}, req.body.password, function(err, user){
+    if(err){
+      console.error(err);
+      res.redirect("/register");
+    }else{
+      passport.authenticate("local")(req,res, function(){
+        res.redirect("/cars")
+      });
+    }
+  });
+});
+
+
+app.post("/login", function(req,res){
+  const user = new User({
+    username:req.body.username,
+    password:req.body.password
+  });
+
+  req.login(user, function(err){
+    if(err){
+      console.log(err)
+    }else{
+      passport.authenticate("local")(req,res, function(){
+        res.redirect("/cars")
+      });
+    }
+  });
+})
 
 
 
