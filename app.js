@@ -8,6 +8,8 @@ require("dotenv").config();
 const session = require('express-session');
 const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const findOrcreate = require('mongoose-findorcreate');
 
 //All External models that have image uploads
 const Brand = require("./filemodels/brands");
@@ -40,11 +42,9 @@ mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser:true}).then(()=>{
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
-    required: true,
   },
   email: {
     type: String,
-    required: true,
     match: [
       /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
       "Please fill a valid email address",
@@ -55,12 +55,14 @@ const userSchema = new mongoose.Schema({
     minLength: 8,
     maxLength: 15,
   },
+  googleId:String,
   Issues: [{ type: mongoose.Schema.Types.ObjectId, ref: "Issue" }],
   Comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],
   UserWishList: { type: mongoose.Schema.Types.ObjectId, ref: "WishList" },
 });
 
 userSchema.plugin(passportLocalMongoose);
+// userSchema.plugin(findOrcreate);
 //Model for Users Schema
 const User = new mongoose.model("User", userSchema);
 
@@ -80,6 +82,33 @@ passport.deserializeUser(function(user, cb) {
     return cb(null, user);
   });
 });
+
+passport.use(new GoogleStrategy({
+  clientID: process.env.CLIENT_ID,
+  clientSecret:process.env.CLIENT_SECRET,
+  callbackURL: "http://localhost:3000/auth/google/RideHive",
+  userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
+},
+
+function(accessToken, refreshToken, profile, cb) {
+  User.findOne({ googleId: profile.id }).then((foundUser) => {
+      if (foundUser) {
+        return foundUser;
+      } else {
+        const newUser = new User({
+          googleId: profile.id
+        });
+        return newUser.save();
+      }
+    }).then((user) => {
+      return cb(null, user);
+    }).catch((err) => {
+      return cb(err);
+    });
+}
+
+));
+
 
 //Issues schema
 const issueSchema = new mongoose.Schema({
@@ -113,6 +142,14 @@ const WishList = new mongoose.model("WishList", wishlistSchema);
 //Home Route
 app.get("/", function (req, res) {
   res.render("home")
+});
+
+app.get("/auth/google", 
+    passport.authenticate('google', {scope: ["profile"] })
+);
+app.get("/auth/google/RideHive", passport.authenticate("google", {failureRedirect:"/login"}),
+function(req, res){
+    res.redirect("/cars")
 });
 
 //Edit Route
@@ -191,7 +228,7 @@ app.post("/register", function(req,res){
       res.redirect("/register");
     }else{
       passport.authenticate("local")(req,res, function(){
-        res.redirect("/login")
+        res.redirect("/cars")
       });
     }
   });
