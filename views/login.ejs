@@ -3,8 +3,8 @@
     <div class="auth-container">
         <div class="auth-items">
             <h5 style="color: #00ADB5; text-align: left; font-family: 'Raleway', sans-serif;">Welcome to RideHive</h5>
-            <form onclick="verifyPassword()">
-                <input type="text" id="usernameInput" name="userName" placeholder="Enter your Username" class="auth-inputs" autocomplete="none" required >
+            <form method="post" action="/login">
+                <input type="text" id="usernameInput" name="username" placeholder="Enter your Username" class="auth-inputs" autocomplete="none" required >
                 <br/>
                 <input type="password" id="passwordInput" name="password" placeholder="Enter your Password" class="auth-inputs" required>
                 <br/>
