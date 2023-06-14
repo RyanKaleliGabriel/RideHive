@@ -4,6 +4,7 @@ const ejs = require("ejs");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const multer = require("multer");
+const _ = require("lodash");
 require("dotenv").config();
 const session = require('express-session');
 const passport = require("passport");
@@ -14,6 +15,7 @@ const findOrcreate = require('mongoose-findorcreate');
 //All External models that have image uploads
 const Brand = require("./filemodels/brands");
 const Car = require("./filemodels/cars");
+
 
 ///configuring our middleware
 const app = express();
@@ -154,7 +156,6 @@ function(req, res){
 
 //Edit Route
 app.get("/edit", function (req, res) {
-  
   res.render("edit");
 });
 
@@ -163,9 +164,8 @@ app.get("/cars", function (req, res) {
   if(req.isAuthenticated()){
     res.render("cars");
   }else{
-    redirect("/login");
+    res.render("login");
   }
-  
 });
 
 //One Car Page
@@ -185,7 +185,6 @@ app.get("/login", function (req, res) {
 
 //Admins Page
 app.get("/admin", function (req, res) {
-  
   res.render("admin");
 });
 
@@ -197,9 +196,14 @@ app.get("/posts", function (req, res) {
 
 //Brands Car(Admin) Route
 app.get("/brands", function (req, res) {
-  
-  res.render("brands");
+  Brand.find({}).then((foundBrands)=>{
+    res.render("brands", {newBrands: foundBrands});
+  }).catch((err)=>{
+    console.error(err);
+  })
 });
+
+
 // Car(Admin) Route
 app.get("/car-admin", function (req, res) {
   
@@ -251,6 +255,34 @@ app.post("/login", function(req,res){
     }
   });
 })
+
+app.post("/postbrand", function(req,res){
+  const brandName = req.body.brandName;
+  const existingBrand = Brand.findOne({name:brandName.name});
+
+  if(_.lowerCase(existingBrand) == _.lowerCase(brandName)){
+    console.log("Brand already exists");
+    res.redirect("/posts")
+  }else{
+    try{
+      const brand = new Brand({
+        name: _.lowerCase(brandName)
+      });
+      brand.save();
+      res.redirect("/brands")
+    }catch(err){
+      console.error(err)
+    }
+  }
+
+
+  // try{
+  //   brand.save()
+  //   res.redirect("/brands")
+  // }catch(error){
+  //   console.error(error)
+  // }
+});
 
 
 

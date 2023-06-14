@@ -8,13 +8,15 @@
             <option value="/post">Post</option>
         </select>
         <div class="system-items" id="brands">
+            <% newBrands.forEach(function(newBrand){ %>
             <hr>
             <ol start="1" class="brand-items">
-                <li style="font-family: Arial; color: #00ADB5;">Toyota</li>
+                <li style="font-family: Arial; color: #00ADB5;"><%= newBrand.name %></li>
                 <Button class="edit-delete-btns">Edit</Button>
                 <Button class="edit-delete-btns">Delete</Button>
             </ol>
             <hr>
+            <% } )%>
         </div>
     </div>
 </div>

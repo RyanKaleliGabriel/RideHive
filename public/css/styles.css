@@ -394,6 +394,7 @@ font-family: 'Playfair Display', serif;
 .admin-select{
   margin-left: 4.2rem; color: #EEEEEE; font-family: 'Playfair Display', serif; background-color: #393E46; border: none; font-size: 1.5rem; margin-bottom: 5px;
 }
+
 .car-form-container{
   display: flex;
   flex-direction: row;
