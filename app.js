@@ -257,31 +257,24 @@ app.post("/login", function(req,res){
 })
 
 app.post("/postbrand", function(req,res){
-  const brandName = req.body.brandName;
-  const existingBrand = Brand.findOne({name:brandName.name});
+  const brandname = req.body.brandName
+  const lowercaseBrandname = _.lowerCase(brandname);
 
-  if(_.lowerCase(existingBrand) == _.lowerCase(brandName)){
-    console.log("Brand already exists");
-    res.redirect("/posts")
-  }else{
-    try{
+  Brand.findOne({name: {$regex: new RegExp('^' + lowercaseBrandname + '$', 'i')}}).then(existingBrand=>{
+    if(existingBrand){
+      console.log("Brand already exists");
+      res.redirect("/posts");
+    }else{
       const brand = new Brand({
-        name: _.lowerCase(brandName)
+        name: brandname
       });
       brand.save();
-      res.redirect("/brands")
-    }catch(err){
-      console.error(err)
+      res.redirect("/brands");
     }
-  }
-
-
-  // try{
-  //   brand.save()
-  //   res.redirect("/brands")
-  // }catch(error){
-  //   console.error(error)
-  // }
+  }).catch(err=>{
+    console.error(err);
+    res.status(500).send("Internal Server Error");
+  });
 });
 
 

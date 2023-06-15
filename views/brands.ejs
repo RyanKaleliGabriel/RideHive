@@ -11,8 +11,9 @@
             <% newBrands.forEach(function(newBrand){ %>
             <hr>
             <ol start="1" class="brand-items">
+                <input type="hidden" value="<%= newBrand.id %>" name="id">
                 <li style="font-family: Arial; color: #00ADB5;"><%= newBrand.name %></li>
-                <Button class="edit-delete-btns">Edit</Button>
+                <a href="" class="edit-delete-btns">Edit</Button>
                 <Button class="edit-delete-btns">Delete</Button>
             </ol>
             <hr>
