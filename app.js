@@ -143,7 +143,7 @@ const WishList = new mongoose.model("WishList", wishlistSchema);
 
 //Home Route
 app.get("/", function (req, res) {
-  res.render("home")
+  res.render("./app/home")
 });
 
 app.get("/auth/google", 
@@ -154,50 +154,41 @@ function(req, res){
     res.redirect("/cars")
 });
 
-//Edit Route
-app.get("/edit", function (req, res) {
-  res.render("edit");
-});
+
 
 //All Car Page
 app.get("/cars", function (req, res) {
   if(req.isAuthenticated()){
-    res.render("cars");
+    res.render("./app/cars");
   }else{
-    res.render("login");
+    res.render("./app/login");
   }
 });
 
 //One Car Page
 app.get("/car", function(req,res){
-  res.render("car")
+  res.render("./app/car")
 });
 
 //Register Route
 app.get("/register", function (req, res) {
-  res.render("register")
+  res.render("./app/register")
 });
 
 //Login Route
 app.get("/login", function (req, res) {
-  res.render("login");
+  res.render("./app/login");
 });
 
 //Admins Page
 app.get("/admin", function (req, res) {
-  res.render("admin");
-});
-
-//Post Car(Admin) Route
-app.get("/posts", function (req, res) {
-  
-  res.render("post");
+  res.render("./admin/admin");
 });
 
 //Brands Car(Admin) Route
 app.get("/brands", function (req, res) {
   Brand.find({}).then((foundBrands)=>{
-    res.render("brands", {newBrands: foundBrands});
+    res.render("./admin/brand/brands", {newBrands: foundBrands});
   }).catch((err)=>{
     console.error(err);
   })
@@ -206,22 +197,15 @@ app.get("/brands", function (req, res) {
 
 // Car(Admin) Route
 app.get("/car-admin", function (req, res) {
-  
-  res.render("car-admin");
+  res.render("./admin/car/car-admin");
 });
-// Admin Users(Admin) Route
-app.get("/admin-users", function (req, res) {
-  
-  res.render("admin-users");
-});
+
+
+
+
 //  Users(Admin) Route
 app.get("/users", function (req, res) {
-  
-  res.render("users");
-});
-//  Post(Admin) Route
-app.get("/post", function (req, res) {
-  res.render("post");
+  res.render("./admin/user/users");
 });
 
 

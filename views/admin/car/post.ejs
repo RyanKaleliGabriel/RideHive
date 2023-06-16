@@ -1,4 +1,4 @@
-<%- include("partials/admin-header") %>
+<%- include("../../partials/admin-header") %>
 
 <div class="car-form-container" id="carFormContainer">
     <div class="car-form-items">
@@ -18,33 +18,7 @@
         <button class="btn-auth">Post Car</button>
        </form>
     </div>
-    <div class="car-form-items">
-        <p class="err-msg"></p>
-        <h2 style="color: white;">Add a new Brand</h2><br/>
-        <form action="/postbrand" method="post">
-        <input type="text" name="brandName" placeholder="Brand Name" class="auth-inputs" autocomplete="none" required>
-        <br>
-        <button class="btn-auth">Add Brand</button>
-       </form>
-    </div>
-    <div class="car-form-items">
-        <h2 style="color: white;">Add a new Admin</h2><br/>
-        <form action="">
-        <input type="text" placeholder="Admin Name" class="auth-inputs" autocomplete="none" required>
-        <br>
-        <input type="email" placeholder="Email" class="auth-inputs" autocomplete="none" required><br>
-        <input type="password" placeholder="Password" class="auth-inputs" autocomplete="none" required><br>
-        <button class="btn-auth">Add new Admin</button>
-       </form>
-    </div>
-</div>
-
-<!-- Brand Form -->
-<div class="car-form-container" id="brandFormContainer">
-</div>
-
-<!-- Admin Form -->
-<div class="car-form-container" id="adminFormContainer">
 
 </div>
-<%- include("partials/admin-footer") %>
+
+<%- include("../partials/admin-footer") %>

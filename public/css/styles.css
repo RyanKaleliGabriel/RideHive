@@ -364,7 +364,7 @@ font-family: 'Playfair Display', serif;
 }
 .brand-items li{
   display: inline-block;
-}
+} 
 .edit-delete-btns{
   border: none;
   color: #EEEEEE; 
@@ -410,6 +410,14 @@ font-family: 'Playfair Display', serif;
   flex-basis: auto;
   background-color: #393E46;
   padding: 15px;
+}
+.add-btn{
+  width: auto;
+  border: 1px solid black;
+  background-color: #393E46;
+}
+.add-btn :hover{
+  background-color: #222831;
 }
 @media (max-width: 1024px) {
   #adminMenu{

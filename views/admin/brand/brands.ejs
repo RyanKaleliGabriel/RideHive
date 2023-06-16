@@ -1,19 +1,20 @@
-<%- include("partials/admin-header.ejs") %>
+<%- include("../../partials/admin-header.ejs") %>
 
 <!-- Brands Posted -->
 <div class="brand-class" id="brandContent">
     <div class="system-container">
-        <select class="admin-sections-headings" onchange="window.location.href=this.value;">
+        <!-- <select class="admin-sections-headings" onchange="window.location.href=this.value;">
             <option value="" disabled selected hidden> Brands</option>
             <option value="/post">Post</option>
-        </select>
+        </select> -->
+        <p class="admin-sections-headings">Brands <button class="add-btn"><i class="fa-solid fa-circle-plus" <i class="fa-solid fa-circle-plus" style="color: #e6e7ea;"></i></button></p>
         <div class="system-items" id="brands">
             <% newBrands.forEach(function(newBrand){ %>
             <hr>
-            <ol start="1" class="brand-items">
+            <ol class="brand-items">
                 <input type="hidden" value="<%= newBrand.id %>" name="id">
                 <li style="font-family: Arial; color: #00ADB5;"><%= newBrand.name %></li>
-                <a href="" class="edit-delete-btns">Edit</Button>
+                <button class="edit-delete-btns">Edit</Button>
                 <Button class="edit-delete-btns">Delete</Button>
             </ol>
             <hr>
@@ -23,4 +24,4 @@
 </div>
 <!-- Brands Posted -->
 
-<%- include("partials/admin-footer.ejs") %>
+<%- include("../../partials/admin-footer.ejs") %>
