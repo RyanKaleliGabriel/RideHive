@@ -1,7 +1,8 @@
 const commentButton = document.getElementById("commentPopup");
 const searchButton = document.getElementById("advancedSearch");
 const closeSearchButton = document.getElementById("cancelButton");
-const issuesButton = document.getElementById("issuePopup")
+const issuesButton = document.getElementById("issuePopup");
+const postButton = document.getElementById("postForms");
 
 //Function to get Full Year
 function getFullYear(){
@@ -46,6 +47,13 @@ function closeSearchWindow(){
 function toggleMenu(){
     var menu = document.getElementById("adminMenu")
     menu.classList.toggle('show');
+}
+
+function showForms(){
+    postButton.addEventListener("click", function(event){
+        event.preventDefault();
+        document.getElementById("carFormContainer").style.display="flex";
+    });
 }
 
 

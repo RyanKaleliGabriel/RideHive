@@ -1,5 +1,17 @@
 <%- include("../../partials/admin-header.ejs") %>
 
+<div class="car-form-container" id="carFormContainer">
+    <div class="car-form-items">
+        <p class="err-msg"></p>
+        <h2 style="color: white;">Add a new Brand</h2><br/>
+        <form action="/postbrand" method="post">
+        <input type="text" name="brandName" placeholder="Brand Name" class="auth-inputs" autocomplete="none" required>
+        <br>
+        <button class="btn-auth">Add Brand</button>
+       </form>
+    </div>
+</div>
+
 <!-- Brands Posted -->
 <div class="brand-class" id="brandContent">
     <div class="system-container">
@@ -7,7 +19,7 @@
             <option value="" disabled selected hidden> Brands</option>
             <option value="/post">Post</option>
         </select> -->
-        <p class="admin-sections-headings">Brands <button class="add-btn"><i class="fa-solid fa-circle-plus" <i class="fa-solid fa-circle-plus" style="color: #e6e7ea;"></i></button></p>
+        <p class="admin-sections-headings">Brands <button onclick="showForms()" id="postForms" class="add-btn"><i class="fa-solid fa-circle-plus" style="color: #e6e7ea;"></i></button></p>
         <div class="system-items" id="brands">
             <% newBrands.forEach(function(newBrand){ %>
             <hr>

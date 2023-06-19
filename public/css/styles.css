@@ -396,7 +396,7 @@ font-family: 'Playfair Display', serif;
 }
 
 .car-form-container{
-  display: flex;
+  display: none;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;

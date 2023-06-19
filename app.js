@@ -193,11 +193,23 @@ app.get("/brands", function (req, res) {
     console.error(err);
   })
 });
+app.get("/brand/post", function(req,res){
+  res.render("./admin/brand/post")
+});
+app.get("/brand/edit", function(){
+  res.render("./admin/brand/edit")
+});
 
 
 // Car(Admin) Route
 app.get("/car-admin", function (req, res) {
   res.render("./admin/car/car-admin");
+});
+app.get("/car/post", function(req,res){
+  res.render("./admin/car/post");
+});
+app.get("/car/edit", function(req, res){
+  res.render("./car/edit")
 });
 
 
