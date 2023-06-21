@@ -1,14 +1,16 @@
-<%- include("../../partials/admin-header") %>
+<%- include("../../partials/admin-header.ejs") %>
 
-<div class="car-form-container" id="carFormContainer">
-    <div class="car-form-items">
+<div class="edit-form-container" id="editFormContainer">
+    <div class="edit-form-items">
         <p class="err-msg"></p>
-        <h2 style="color: white;">Add a new Brand</h2><br/>
-        <form action="/postbrand" method="post">
-        <input type="text" name="brandName" placeholder="Brand Name" class="auth-inputs" autocomplete="none" required>
+        <h2 style="color: white;">Edit this brand</h2><br/>
+        <form action="/updateBrand" method="post">
+        <input type="hidden" name="brandId" value="<%= brandToEdit.id %>">
+        <input value="<%= brandToEdit.name  %>" type="text" name="brandName" class="auth-inputs" autocomplete="none" required>
         <br>
-        <button class="btn-auth">Add Brand</button>
+        <button type="submit" class="btn-auth">Update</button>
        </form>
     </div>
 </div>
-<%- include("../../partials/admin-footer") %>
+
+<%- include("../../partials/admin-footer.ejs") %>

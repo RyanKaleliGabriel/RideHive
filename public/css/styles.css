@@ -406,6 +406,22 @@ font-family: 'Playfair Display', serif;
   margin-bottom: 15px;
   margin-top: 15px;
 }
+.edit-form-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-content: center;
+  flex-grow: 1;
+  flex-shrink: 1;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+.edit-form-items{
+  flex-basis: auto;
+  background-color: #393E46;
+  padding: 15px;
+}
 .car-form-items{
   flex-basis: auto;
   background-color: #393E46;

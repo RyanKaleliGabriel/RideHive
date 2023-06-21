@@ -196,9 +196,24 @@ app.get("/brands", function (req, res) {
 app.get("/brand/post", function(req,res){
   res.render("./admin/brand/post")
 });
-app.get("/brand/edit", function(){
-  res.render("./admin/brand/edit")
+
+app.get("/brand/edit/:brandId", function(req,res){
+  const makeid = req.params.brandId;
+  console.log(makeid)
+  Brand.findOne({_id : makeid}).then((foundBrand)=>{
+    res.render("./admin/brand/edit", {brandToEdit: foundBrand})
+  }).catch((err)=>{
+    console.error(err)
+  });
 });
+app.post("/updatebrand", function(req,res){
+  idUpdate = req.body.brandId;
+  Brand.findByIdAndUpdate(idUpdate, {name:req.body.brandName}, {overwrite:true}).then((result)=>{
+    res.redirect("/brands")
+  }).catch((err)=>{
+    console.error(err);
+  })
+})
 
 
 // Car(Admin) Route
@@ -209,7 +224,7 @@ app.get("/car/post", function(req,res){
   res.render("./admin/car/post");
 });
 app.get("/car/edit", function(req, res){
-  res.render("./car/edit")
+  res.render("./admin/car/edit")
 });
 
 
@@ -219,6 +234,7 @@ app.get("/car/edit", function(req, res){
 app.get("/users", function (req, res) {
   res.render("./admin/user/users");
 });
+
 
 
 app.post("/register", function(req,res){

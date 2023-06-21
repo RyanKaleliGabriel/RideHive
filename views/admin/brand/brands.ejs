@@ -7,7 +7,7 @@
         <form action="/postbrand" method="post">
         <input type="text" name="brandName" placeholder="Brand Name" class="auth-inputs" autocomplete="none" required>
         <br>
-        <button class="btn-auth">Add Brand</button>
+        <button type="submit" class="btn-auth">Add Brand</button>
        </form>
     </div>
 </div>
@@ -15,10 +15,6 @@
 <!-- Brands Posted -->
 <div class="brand-class" id="brandContent">
     <div class="system-container">
-        <!-- <select class="admin-sections-headings" onchange="window.location.href=this.value;">
-            <option value="" disabled selected hidden> Brands</option>
-            <option value="/post">Post</option>
-        </select> -->
         <p class="admin-sections-headings">Brands <button onclick="showForms()" id="postForms" class="add-btn"><i class="fa-solid fa-circle-plus" style="color: #e6e7ea;"></i></button></p>
         <div class="system-items" id="brands">
             <% newBrands.forEach(function(newBrand){ %>
@@ -26,7 +22,9 @@
             <ol class="brand-items">
                 <input type="hidden" value="<%= newBrand.id %>" name="id">
                 <li style="font-family: Arial; color: #00ADB5;"><%= newBrand.name %></li>
-                <button class="edit-delete-btns">Edit</Button>
+                <a href="/brand/edit/<%= newBrand.id%>">
+                    <Button class="edit-delete-btns">Edit</Button>
+                 </a> 
                 <Button class="edit-delete-btns">Delete</Button>
             </ol>
             <hr>
