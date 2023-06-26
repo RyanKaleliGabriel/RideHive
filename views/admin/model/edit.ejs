@@ -1,0 +1,16 @@
+<%- include("../../partials/admin-header.ejs") %>
+
+<div class="edit-form-container" id="editFormContainer">
+    <div class="edit-form-items">
+        <p class="err-msg"></p>
+        <h2 style="color: white;">Edit this model</h2><br/>
+        <form action="/updateModel" method="post">
+        <input type="hidden" name="modelId" value="<%= modelToEdit.id %>">
+        <input value="<%= modelToEdit.name %>" type="text" name="modelName" class="auth-inputs" autocomplete="none" required>
+        <br>
+        <button type="submit" class="btn-auth">Update</button>
+       </form>
+    </div>
+</div>
+
+<%- include("../../partials/admin-footer.ejs") %>

@@ -15,6 +15,7 @@ const findOrcreate = require('mongoose-findorcreate');
 //All External models that have image uploads
 const Brand = require("./filemodels/brands");
 const Car = require("./filemodels/cars");
+const Model = require("./filemodels/model");
 
 
 ///configuring our middleware
@@ -228,13 +229,41 @@ app.get("/car/edit", function(req, res){
 });
 
 
-
-
 //  Users(Admin) Route
 app.get("/users", function (req, res) {
   res.render("./admin/user/users");
 });
 
+//Car models Rute
+app.get("/models", function(req,res){
+  Model.find({}).then((foundModels)=>{
+    res.render("./admin/model/models", {newModels:foundModels})
+  }).catch((err)=>{
+    console.error(err)
+  });
+});
+
+app.get("/model/edit/:modelId", function(req,res){
+  modelIdToUpdate = req.params.modelId;
+  Model.findOne({_id:modelIdToUpdate}).then((foundModel)=>{
+    res.render("./admin/model/edit", {modelToEdit:foundModel});
+  }).catch((err)=>{
+    console.error(err);
+    //Add a pop up
+  });
+});
+
+app.post("/updateModel", function(req,res){
+  idModelUpdate = req.body.modelId;
+  Model.findByIdAndUpdate(idModelUpdate, {name:req.body.modelName}, {overwrite:true}).then((results)=>{
+    console.log("Updated Successfully");
+    //Add a popUp
+    res.redirect("/models");
+  }).catch((err)=>{
+    console.error(err);
+    //Add a Pop Up
+  })
+})
 
 
 app.post("/register", function(req,res){
@@ -275,7 +304,7 @@ app.post("/postbrand", function(req,res){
   Brand.findOne({name: {$regex: new RegExp('^' + lowercaseBrandname + '$', 'i')}}).then(existingBrand=>{
     if(existingBrand){
       console.log("Brand already exists");
-      res.redirect("/posts");
+      //add a pop up
     }else{
       const brand = new Brand({
         name: brandname
@@ -288,6 +317,27 @@ app.post("/postbrand", function(req,res){
     res.status(500).send("Internal Server Error");
   });
 });
+
+app.post("/postmodel", function(req,res){
+  const modelname = req.body.modelName;
+  const lowercaseModelname = _.lowerCase(modelname);
+
+  Model.findOne({name: {$regex: new RegExp('^' + lowercaseModelname + '$', 'i')}}).then(existingModel=>{
+    if(existingModel){
+      console.log("Model already exists");
+      //Add a pop up
+    }else{
+      const model = new Model({
+        name:modelname
+      });
+      model.save();
+      res.redirect("/models")
+    }
+  }).catch(err=>{
+    console.error(err);
+    res.status(500).send("Internal Server Error");
+  })
+})
 
 
 
