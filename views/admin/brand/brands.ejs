@@ -25,7 +25,9 @@
                 <a href="/brand/edit/<%= newBrand.id%>">
                     <Button class="edit-delete-btns">Edit</Button>
                  </a> 
-                <Button class="edit-delete-btns">Delete</Button>
+                 <form class="delete-btn" action="/deletebrand/<%= newBrand.id %>" method="post">
+                    <Button class="delete-form-btn">Delete</Button>
+                </form>
             </ol>
             <hr>
             <% } )%>

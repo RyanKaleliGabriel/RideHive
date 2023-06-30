@@ -449,6 +449,15 @@ font-family: 'Playfair Display', serif;
     display: inline-block;
   }
 }
+.delete-btn{
+  float: right;
+}
+.delete-form-btn{
+  color: #EEEEEE; 
+  font-family: 'Playfair Display', serif;
+  background-color: #393E46;
+  margin-right: 5px;
+}
 @media (max-width: 768px){
   #adminMenu{
     display: none;

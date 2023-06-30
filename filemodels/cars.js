@@ -1,25 +1,19 @@
 const mongoose = require("mongoose");
 const Brand = require("./brands");
 const Admin = require("./admin");
+const Model = require("./model");
 
 
 //Cars Schema
 const carsSchema = new mongoose.Schema({
-    brand:{type: mongoose.Schema.Types.ObjectId, ref:'Brand'},
-    firstName:{type: String},
-    secondName:{type: String},
-    year: {type: Number},
-    engineCapacity: {type: Number},
-    torque: {type: Number},
-    horsepower: {type: Number},
-    transmission: {type: String},
-    fuelType:{type: String},
+    brandid:{type: mongoose.Schema.Types.ObjectId, ref:'Brand'},
+    name:{type: String},
+    year:{type:String},
+    modelid:{type: mongoose.Schema.Types.ObjectId, ref:'Model'},
     description:{type: String},
-    file:{
-        data:Buffer,
-        contentType:String
-    },
-    Author:{type: mongoose.Schema.Types.ObjectId, ref:'Admin'}
+    filename:{type: String},
+    path:{type: String},
+    size:{type: String}
 });
 
 const Car = new mongoose.model("Car", carsSchema);

@@ -8,10 +8,11 @@ const _ = require("lodash");
 require("dotenv").config();
 const session = require('express-session');
 const passport = require("passport");
+const path = require("path");
 const passportLocalMongoose = require("passport-local-mongoose");
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const findOrcreate = require('mongoose-findorcreate');
-
+const fs = require("fs");
 //All External models that have image uploads
 const Brand = require("./filemodels/brands");
 const Car = require("./filemodels/cars");
@@ -219,8 +220,22 @@ app.post("/updatebrand", function(req,res){
 
 // Car(Admin) Route
 app.get("/car-admin", function (req, res) {
-  res.render("./admin/car/car-admin");
+  Brand.find({}).then((foundbrands)=>{
+    if(foundbrands){
+      Model.find({}).then((foundmodels)=>{
+        if(foundmodels){
+          Car.find({}).then((foundcars)=>{
+            if(foundcars){
+              res.render("./admin/car/car-admin", {allmodels:foundmodels, allbrands:foundbrands, allcars:foundcars})
+            }
+          })
+        }
+      });
+    }
+  });  
 });
+
+
 app.get("/car/post", function(req,res){
   res.render("./admin/car/post");
 });
@@ -337,7 +352,65 @@ app.post("/postmodel", function(req,res){
     console.error(err);
     res.status(500).send("Internal Server Error");
   })
-})
+});
+
+app.post("/deletebrand/:brandid", function(req,res){
+  const brandid = req.params.brandid;
+  Brand.findOneAndDelete({_id:brandid}).then((results)=>{
+    //add a pop up
+    res.redirect("/brands")
+  }).catch((err)=>{
+    //Add a pop up
+    console.error(err)
+  });
+});
+
+app.post("/deletemodel/:modelid", function(req,res){
+  const modelid = req.params.modelid;
+  Model.findOneAndDelete({_id:modelid}).then((results)=>{
+    //Add a pop up
+    res.redirect("/models")
+  }).catch((err)=>{
+    //Add a popup
+    console.error(err)
+  }); 
+});
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'public/uploads/'); // Set the directory where uploaded files will be stored
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname); // Set the file name to be saved as
+  }
+});
+
+var upload = multer({storage:storage})
+
+app.post("/postcar", upload.single('image'), function(req,res){
+  if(!req.file){
+    return res.status(400).send('No file uploaded.');
+  }
+  const newCar = new Car({
+    name:req.body.carName,
+    year:req.body.year,
+    description:req.body.description,
+    brandid:req.body.carBrand,
+    modelid:req.body.carModel,
+    filename:req.file.filename,
+    path:req.file.path,
+    size:req.file.size
+  })
+  newCar.save().then(()=>{
+    //Add a popup
+    res.send('File uploaded successfully.')
+    console.log("Successfully saved")
+  }).catch(()=>{
+    res.status(500).send('Failed to upload file.');
+  });
+});
+
+
 
 
 
