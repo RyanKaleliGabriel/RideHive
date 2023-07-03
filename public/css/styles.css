@@ -435,6 +435,11 @@ font-family: 'Playfair Display', serif;
 .add-btn :hover{
   background-color: #222831;
 }
+.columns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+}
 @media (max-width: 1024px) {
   #adminMenu{
     display: none;

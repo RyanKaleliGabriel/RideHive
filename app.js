@@ -190,7 +190,13 @@ app.get("/admin", function (req, res) {
 //Brands Car(Admin) Route
 app.get("/brands", function (req, res) {
   Brand.find({}).then((foundBrands)=>{
-    res.render("./admin/brand/brands", {newBrands: foundBrands});
+    if(foundBrands){
+      Model.find({}).then((foundModels)=>{
+        if(foundModels){
+          res.render("./admin/brand/brands", {newBrands: foundBrands, newModels:foundModels});
+        }
+      })
+    }
   }).catch((err)=>{
     console.error(err);
   })
@@ -226,7 +232,7 @@ app.get("/car-admin", function (req, res) {
         if(foundmodels){
           Car.find({}).then((foundcars)=>{
             if(foundcars){
-              res.render("./admin/car/car-admin", {allmodels:foundmodels, allbrands:foundbrands, allcars:foundcars})
+              res.render("./admin/car/car-admin", {allbrands:foundbrands, allcars:foundcars})
             }
           })
         }
@@ -239,8 +245,24 @@ app.get("/car-admin", function (req, res) {
 app.get("/car/post", function(req,res){
   res.render("./admin/car/post");
 });
-app.get("/car/edit", function(req, res){
-  res.render("./admin/car/edit")
+app.get("/car/edit/:carId", function(req, res){
+  const carid = req.params.carId;
+  Car.findOne({_id: carid}).then((foundCar)=>{
+    if(foundCar){
+      Model.find({}).then((foundmodels)=>{
+        if(foundmodels){
+          Brand.find({}).then((foundbrands)=>{
+            if(foundbrands){
+              res.render("./admin/car/edit", {cartoedit:foundCar, allbrands:foundbrands, allmodels:foundmodels})
+            }
+          })
+        }
+      })
+    }
+  }).catch((err)=>{
+    console.log(err)
+  });
+  
 });
 
 
@@ -321,8 +343,10 @@ app.post("/postbrand", function(req,res){
       console.log("Brand already exists");
       //add a pop up
     }else{
+      const { brandName, models} = req.body;
       const brand = new Brand({
-        name: brandname
+        name:brandName,
+        models: Array.isArray(models) ? models: [models],
       });
       brand.save();
       res.redirect("/brands");
@@ -403,7 +427,7 @@ app.post("/postcar", upload.single('image'), function(req,res){
   })
   newCar.save().then(()=>{
     //Add a popup
-    res.send('File uploaded successfully.')
+    res.redirect("/car-admin")
     console.log("Successfully saved")
   }).catch(()=>{
     res.status(500).send('Failed to upload file.');
@@ -411,7 +435,39 @@ app.post("/postcar", upload.single('image'), function(req,res){
 });
 
 
+app.post("/updatecar", upload.single('image'), function(req, res) {
+  const carid = req.body.carId;
+  Car.findOneAndUpdate({"_id":carid},
+  {
+    "$set":{
+      "brandid": req.body.carBrand,
+      "name": req.body.carName,
+      "year": req.body.year,
+      "modelid": req.body.carModel,
+      "description": req.body.description,
+      "filename": req.file.filename,
+      "path": req.file.path,
+      "size": req.file.size
+    }
+  }
+  ).then((result)=>{
+    res.redirect("/car-admin")
+    console.log("Updated successfully")
+  }).catch((err)=>{
+    console.error(err)
+  })
+});
 
+app.post("/deletecar/:carId", function(req,res){
+  const carid = req.params.carId
+  Car.findOneAndDelete({_id:carid}).then((results)=>{
+    //add a pop up
+    res.redirect("/car-admin")
+    console.log("Deleted successfully");
+  }).then((err)=>{
+    console.error(err)
+  });
+});
 
 
 app.listen(process.env.PORT, function () {

@@ -1,49 +1,35 @@
 <%- include("../../partials/admin-header.ejs") %>
 
-
-
-<div class="car-form-container" id="carFormContainer">
-    <div class="car-form-items">
+<div class="edit-form-container" id="editFormContainer">
+    <div class="edit-form-items">
         <h2 style="color: white;">Add a new Car</h2><br/>
-        <form action="/postcar" method="post">
-        <input type="text" name="carName" placeholder="Car Name" class="auth-inputs" autocomplete="none" required>
+        <form action="/updatecar" method="post" enctype="multipart/form-data">
+        <input value="<%= cartoedit.id  %>" name="carId" type="hidden">
+        <input value="<%= cartoedit.name  %>" type="text" name="carName" placeholder="Car Name" class="auth-inputs" autocomplete="none" required>
         <br>
-        <input type="text" name="year" placeholder="Year" class="auth-inputs" autocomplete="none" required><br>
-        <input type="text" name="engine" placeholder="Engine Capacity" class="auth-inputs" autocomplete="none" required><br>
-        <input type="text" name="torque" placeholder="Torque" class="auth-inputs" autocomplete="none" required><br>
-        <input type="text" name="horsePower" placeholder="HorsePower" class="auth-inputs" autocomplete="none" required><br>
-        <input type="text" name="transmission" placeholder="Transmission" class="auth-inputs" autocomplete="none" required><br>
-        <input type="text" name="fuelType" placeholder="Fuel Type" class="auth-inputs" autocomplete="none" required><br>
-        <input type="text" name="description" placeholder="Description" class="auth-inputs" autocomplete="none" required><br>
+        <input value="<%=  cartoedit.year %>" type="text" name="year" placeholder="Year" class="auth-inputs" autocomplete="none" required><br>
+        <select name="carBrand" id="fuelType">
+            <option value="" disabled selected hidden>Car Brand</option>
+            <% allbrands.forEach(brand =>{ %>
+            <option value="<%= brand.id %>" ><%= brand.name %></option>
+            <% }) %>
+        </select>
+        <select name="carModel" id="fuelType">
+            <option value="" disabled selected hidden>Car Model</option>
+            <% allmodels.forEach(model =>{ %>
+                <option value="<%= model.id %>" ><%= model.name %></option>
+            <% }) %>
+        </select>
+        <br>
+        <br>
+        <textarea value="" cols="30" rows="10" placeholder="Description..." name="description" class="auth-inputs"><%=  cartoedit.description %></textarea>
+        <br><br>
         <label for="imageUpload" style="color: white;">Car Image</label><br>
-        <input type="file" name="file" id="imageUpload" title="Car Image" required><br><br>
+        <p>Curren file: <%= cartoedit.filename %></p><br>
+        <input value="<%= cartoedit.filename %>" type="file" name="image" title="Car Image" required><br><br>
         <button class="btn-auth">Post Car</button>
        </form>
     </div>
 </div>
 
-
-
-<!-- Cars Posted -->
-<div class="brand-class" id="carContent">
-    <!-- <select class="admin-select" onchange="window.location.href=this.value;">
-        <option value="" disabled selected hidden> Cars</option>
-        <option value="/post">Post</option>
-    </select> -->
-
-    <div class="system-container">
-        <p class="admin-sections-headings">Cars <button onclick="showForms()" id="postForms" class="add-btn"><i class="fa-solid fa-circle-plus" <i class="fa-solid fa-circle-plus" style="color: #e6e7ea;"></i></button></p>
-        <div class="system-items">
-            <hr>
-            <img class="car-admin-img" src="/assets/2015_mercedes-benz_s550_20220826-120.jpeg" alt=""/>
-                <p class="car-admin-details" style="font-family: Arial; color: #00ADB5;">Year Car Name</p> 
-                <p class="car-admin-details">Curabitur est mauris, maximus a sapien quis, porta molestie libero. Quisque vel sem pulvinar, aliquam risus id, luctus mi. Proin nec pharetra est. Fusce consequat mi neque, eget tincidunt magna faucibus sed. Donec lobortis felis nec mi dictum, ac viverra sapien porttitor. Morbi pharetra orci eget nunc porta iaculis quis sit amet nulla. Curabitur id pellentesque est.</p>
-                <p class="car-admin-details">Posted By: Admin</p><br>
-                <Button class="edit-delete-btns">Edit</Button>
-                <Button class="edit-delete-btns">Delete</Button>
-        </div>
-    </div>
-</div>
-
-<!-- Cars Posted -->
 <%- include("../../partials/admin-footer.ejs") %>

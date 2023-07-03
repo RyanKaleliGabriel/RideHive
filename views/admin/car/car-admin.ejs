@@ -9,21 +9,16 @@
         <input type="text" name="carName" placeholder="Car Name" class="auth-inputs" autocomplete="none" required>
         <br>
         <input type="text" name="year" placeholder="Year" class="auth-inputs" autocomplete="none" required><br>
-        <select name="carBrand" id="fuelType">
+        <select name="carBrand" id="">
             <option value="" disabled selected hidden>Car Brand</option>
             <% allbrands.forEach(brand =>{ %>
-                <option value="<%= brand.id %>" ><%= brand.name %></option>
+                <option name="<%= brand.id %>" value="<%= brand.id %>" ><%= brand.name %></option>
             <% }) %>
         </select>
-        <select name="carModel" id="fuelType">
-            <option value="" disabled selected hidden>Car Model</option>
-            <% allmodels.forEach(model => { %>
-                <option value="<%= model.id %>"><%= model.name %></option>
-            <% });  %>
-        </select>
         <br>
         <br>
-        <input type="text" name="description" placeholder="Description" class="auth-inputs" autocomplete="none" required><br>
+        <textarea cols="30" rows="10" placeholder="Description..." name="description" class="auth-inputs"></textarea>
+        <br><br>
         <label for="imageUpload" style="color: white;">Car Image</label><br>
         <input type="file" name="image" title="Car Image" required><br><br>
         <button class="btn-auth">Post Car</button>
@@ -49,8 +44,12 @@
                 <p class="car-admin-details" style="font-family: Arial; color: #00ADB5;"><%= car.year%> <%= car.name%></p> <br>
                 <p class="car-admin-details"><%= car.description %></p><br>
                 <p class="car-admin-details">Posted By: Admin</p><br>
+                <a href="/car/edit/<%= car.id %>">
                 <Button class="edit-delete-btns">Edit</Button>
-                <Button class="edit-delete-btns">Delete</Button>  
+                </a>
+                <form class="delete-btn" action="/deletecar/<%= car.id %>" method="post">
+                    <Button class="delete-form-btn">Delete</Button>
+                </form>  
         </div>
         <% }); %> 
     </div>
