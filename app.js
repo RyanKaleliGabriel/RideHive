@@ -469,6 +469,24 @@ app.post("/deletecar/:carId", function(req,res){
   });
 });
 
+app.get('/brand/:id/models', function(req,res){
+  try{
+    const brand = req.params.id;    
+    Brand.findById(brand).then((foundBrand)=>{
+      const models = foundBrand.models
+      Model.find({_id: {$in:models}}).then(models =>{
+        const modelOptions = models.map(model =>({
+          value:model._id,
+          label:model.name
+        }));
+        res.json(modelOptions);
+      })
+    })
+    
+  }catch(err){
+    console.error(err)
+  }
+})
 
 app.listen(process.env.PORT, function () {
   console.log("Server is running on port 3000");

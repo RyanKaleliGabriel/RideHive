@@ -9,11 +9,14 @@
         <input type="text" name="carName" placeholder="Car Name" class="auth-inputs" autocomplete="none" required>
         <br>
         <input type="text" name="year" placeholder="Year" class="auth-inputs" autocomplete="none" required><br>
-        <select name="carBrand" id="">
+        <select name="carBrand"  onchange="fetchModels()" id="brand">
             <option value="" disabled selected hidden>Car Brand</option>
             <% allbrands.forEach(brand =>{ %>
                 <option name="<%= brand.id %>" value="<%= brand.id %>" ><%= brand.name %></option>
             <% }) %>
+        </select>
+        <select id="model">
+            <option disabled selected hidden>Car Model</option>
         </select>
         <br>
         <br>
@@ -25,6 +28,7 @@
        </form>
     </div>
 </div>
+
 
 
 

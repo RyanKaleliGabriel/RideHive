@@ -56,6 +56,28 @@ function showForms(){
     });
 }
 
+function fetchModels(){
+    const brandId = document.getElementById('brand').value;
+    const modelDropDown = document.getElementById('model');
+
+    //Reset the modedropdown
+    modelDropDown.innerHTML = '<option value="" disabled selected hidden>Select Model</option>';
+
+    if(brandId){
+        fetch(`/brand/${brandId}/models`)
+        .then(response => response.json())
+        .then(modelOptions =>{
+            modelOptions.forEach(modelOption => {
+                const option = document.createElement('option');
+                option.value = modelOption.value;
+                option.textContent = modelOption.label;
+                modelDropDown.appendChild(option)
+            });
+            modelDropDown.disabled= false;
+        })
+        .catch(err => console.error(err));
+    }
+}
 
 
 
