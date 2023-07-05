@@ -271,14 +271,7 @@ app.get("/users", function (req, res) {
   res.render("./admin/user/users");
 });
 
-//Car models Rute
-app.get("/models", function(req,res){
-  Model.find({}).then((foundModels)=>{
-    res.render("./admin/model/models", {newModels:foundModels})
-  }).catch((err)=>{
-    console.error(err)
-  });
-});
+
 
 app.get("/model/edit/:modelId", function(req,res){
   modelIdToUpdate = req.params.modelId;
@@ -482,11 +475,35 @@ app.get('/brand/:id/models', function(req,res){
         res.json(modelOptions);
       })
     })
-    
   }catch(err){
     console.error(err)
   }
 })
+//Car models Rute
+app.get("/brand/models/:id", function(req,res){
+  // Model.find({}).then((foundModels)=>{
+  //   res.render("./admin/model/models", {newModels:foundModels})
+  // }).catch((err)=>{
+  //   console.error(err)
+  // });
+  const brand = req.params.id;
+  Brand.findById(brand).then((foundBrand)=>{
+    const models = foundBrand.models;
+    Model.find({_id: {$in:models}}).then(models =>{
+      const modelOptions = models.map(model =>({
+        value:model._id,
+        label:model.name
+      }))
+      Model.find({}).then((foundModels)=>{
+        const allmodels = foundModels
+        if(foundModels){
+          res.render("./admin/model/models", {newModels:allmodels, chosenModels:modelOptions})
+        }
+      })
+      
+    })
+  })
+});
 
 app.listen(process.env.PORT, function () {
   console.log("Server is running on port 3000");

@@ -440,6 +440,20 @@ font-family: 'Playfair Display', serif;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 10px;
 }
+.selectedModelContainer{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  flex-shrink: 1;
+  justify-content: space-around;
+  background-color: #393E46;
+  margin-bottom: 2rem;
+}
+.selectedModelItem{
+  flex-basis: auto;
+  background-color: #393E46;
+}
 @media (max-width: 1024px) {
   #adminMenu{
     display: none;

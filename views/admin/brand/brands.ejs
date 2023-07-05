@@ -1,50 +1,71 @@
 <%- include("../../partials/admin-header.ejs") %>
 
 <div class="car-form-container" id="carFormContainer">
-    <div class="car-form-items">
-        <p class="err-msg"></p>
-        <h2 style="color: white;">Add a new Brand</h2><br/>
-        <form action="/postbrand" method="post">
-        <input type="text" name="brandName" placeholder="Brand Name" class="auth-inputs" autocomplete="none" required>
-        <br>
-        <h4 style="color: white;">Choose Models for your Brand</h4>
-        <div class="column">
-            <% newModels.forEach(model =>{ %>
-                <input class="auth-inputs" type="checkbox" name="models" value="<%= model.id %>">
-                <label style="color: #00ADB5;" for="models"><%= model.name %></label><br>
-            <% }) %>
-        </div>
-
-
-
-
-            
-        <button type="submit" class="btn-auth">Add Brand</button>
-       </form>
-    </div>
+  <div class="car-form-items">
+    <p class="err-msg"></p>
+    <h2 style="color: white">Add a new Brand</h2>
+    <br />
+    <form action="/postbrand" method="post">
+      <input
+        type="text"
+        name="brandName"
+        placeholder="Brand Name"
+        class="auth-inputs"
+        autocomplete="none"
+        required
+      />
+      <br />
+      <h4 style="color: white">Choose Models for your Brand</h4>
+      <div class="column">
+        <% newModels.forEach(model =>{ %>
+        <input
+          class="auth-inputs"
+          type="checkbox"
+          name="models"
+          value="<%= model.id %>"
+        />
+        <label style="color: #00adb5" for="models"><%= model.name %></label
+        ><br />
+        <% }) %>
+      </div>
+      <button type="submit" class="btn-auth">Add Brand</button>
+    </form>
+  </div>
 </div>
 
 <!-- Brands Posted -->
 <div class="brand-class" id="brandContent">
-    <div class="system-container">
-        <p class="admin-sections-headings">Brands <button onclick="showForms()" id="postForms" class="add-btn"><i class="fa-solid fa-circle-plus" style="color: #e6e7ea;"></i></button></p>
-        <div class="system-items" id="brands">
-            <% newBrands.forEach(function(newBrand){ %>
-            <hr>
-            <ol class="brand-items">
-                <input type="hidden" value="<%= newBrand.id %>" name="id">
-                <li style="font-family: Arial; color: #00ADB5;"><%= newBrand.name %></li>
-                <a href="/brand/edit/<%= newBrand.id%>">
-                    <Button class="edit-delete-btns">Edit</Button>
-                 </a> 
-                 <form class="delete-btn" action="/deletebrand/<%= newBrand.id %>" method="post">
-                    <Button class="delete-form-btn">Delete</Button>
-                </form>
-            </ol>
-            <hr>
-            <% } )%>
-        </div>
+  <div class="system-container">
+    <p class="admin-sections-headings">
+      Brands
+      <button onclick="showForms()" id="postForms" class="add-btn">
+        <i class="fa-solid fa-circle-plus" style="color: #e6e7ea"></i>
+      </button>
+    </p>
+    <div class="system-items" id="brands">
+      <% newBrands.forEach(function(newBrand){ %>
+      <hr />
+      <ol class="brand-items">
+        <input type="hidden" value="<%= newBrand.id %>" name="id" />
+        <li style="font-family: Arial; color: #00adb5"><%= newBrand.name %></li>
+        <a href="/brand/models/<%= newBrand.id %>">
+          <Button class="edit-delete-btns">Models</Button>
+        </a>
+        <a href="/brand/edit/<%= newBrand.id%>">
+          <Button class="edit-delete-btns">Edit</Button>
+        </a>
+        <form
+          class="delete-btn"
+          action="/deletebrand/<%= newBrand.id %>"
+          method="post"
+        >
+          <Button class="delete-form-btn">Delete</Button>
+        </form>
+      </ol>
+      <hr />
+      <% } )%>
     </div>
+  </div>
 </div>
 <!-- Brands Posted -->
 
