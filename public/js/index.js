@@ -2,7 +2,7 @@ const commentButton = document.getElementById("commentPopup");
 const searchButton = document.getElementById("advancedSearch");
 const closeSearchButton = document.getElementById("cancelButton");
 const issuesButton = document.getElementById("issuePopup");
-const postButton = document.getElementById("postForms");
+
 
 //Function to get Full Year
 function getFullYear(){
@@ -50,6 +50,7 @@ function toggleMenu(){
 }
 
 function showForms(){
+    const postButton = document.getElementById("postForms");
     postButton.addEventListener("click", function(event){
         event.preventDefault();
         document.getElementById("carFormContainer").style.display="flex";

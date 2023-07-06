@@ -15,19 +15,6 @@
         required
       />
       <br />
-      <h4 style="color: white">Choose Models for your Brand</h4>
-      <div class="column">
-        <% newModels.forEach(model =>{ %>
-        <input
-          class="auth-inputs"
-          type="checkbox"
-          name="models"
-          value="<%= model.id %>"
-        />
-        <label style="color: #00adb5" for="models"><%= model.name %></label
-        ><br />
-        <% }) %>
-      </div>
       <button type="submit" class="btn-auth">Add Brand</button>
     </form>
   </div>
@@ -48,7 +35,7 @@
       <ol class="brand-items">
         <input type="hidden" value="<%= newBrand.id %>" name="id" />
         <li style="font-family: Arial; color: #00adb5"><%= newBrand.name %></li>
-        <a href="/brand/models/<%= newBrand.id %>">
+        <a href="/<%= newBrand.name %>/models/<%= newBrand.id %>">
           <Button class="edit-delete-btns">Models</Button>
         </a>
         <a href="/brand/edit/<%= newBrand.id%>">

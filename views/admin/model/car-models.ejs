@@ -1,0 +1,64 @@
+<%- include("../../partials/admin-header.ejs") %>
+
+
+
+
+
+<div class="brand-class" id="brandContent">
+    <div class="system-container">
+        <p class="admin-sections-headings"><%= currentBrand.name %> Models <button onclick="showForms()" id="postForms" class="add-btn"></button></p>
+    </div>
+    <div class="selectedModelContainer">
+        <div class="seletedModelItems ">
+            
+            <% chosenModels.forEach(model =>{ %>
+            <hr style="color: #EEEEEE;">
+            <input class="auth-inputs" type="checkbox" name="models" value="<%= model.value %>" checked/>
+            <label style="color: #00adb5" for="models"><%= model.label %></label> 
+            <br>
+           <% })  %>
+        </div> 
+        <!-- <div class="seletedModelItems ">
+            <h4 style="color: #EEEEEE;font-family: 'Playfair Display', serif;"> Add Other Models</h4>
+            <form action="/searchModels" method="post">
+                <input class="auth-inputs" type="text" placeholder="Search models">
+            </form>
+            <br>
+        </div> -->
+    </div>
+</div> 
+
+
+<div class="brand-class" id="brandContent">
+    <div class="system-container">
+      <p class="admin-sections-headings">
+        Add Other Models
+      </p>
+      <div class="system-items" id="brands">
+        <% newModels.forEach(function(newModel){ %>
+        <hr />
+        <ol class="brand-items">
+          <input type="hidden" value="<%= newModel.id %>" name="id" />
+          <li style="font-family: Arial; color: #00adb5"><%= newModel.name %></li>
+          <form class="delete-btn" action="/addcar-models" method="post">
+          <input type="checkbox" class="edit-delete-btns" value="<%= newModel.id %>">
+         </form>
+        </ol>
+        <hr />
+        <% } )%>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+<%- include("../../partials/admin-footer.ejs") %>

@@ -1,49 +1,56 @@
 <%- include("../../partials/admin-header.ejs") %>
 
 <div class="car-form-container" id="carFormContainer">
-    <div class="car-form-items">
-        <p class="err-msg"></p>
-        <h2 style="color: white;">Add a new Model</h2><br/>
-        <form action="/postmodel" method="post">
-        <input type="text" name="modelName" placeholder="Model Name" class="auth-inputs" autocomplete="none" required>
-        <br>
-        <button type="submit" class="btn-auth">Add Model</button>
-       </form>
-    </div>
+  <div class="car-form-items">
+    <p class="err-msg"></p>
+    <h2 style="color: white">Add a new Model</h2>
+    <br />
+    <form action="/postmodel" method="post">
+      <input
+        type="text"
+        name="modelName"
+        placeholder="Model Name"
+        class="auth-inputs"
+        autocomplete="none"
+        required
+      />
+      <br />
+      <button type="submit" class="btn-auth">Add Model</button>
+    </form>
+  </div>
 </div>
 
 <!-- Brands Posted -->
 <div class="brand-class" id="brandContent">
-    <div class="system-container">
-        <p class="admin-sections-headings">Models <button onclick="showForms()" id="postForms" class="add-btn"><i class="fa-solid fa-circle-plus" style="color: #e6e7ea;"></i></button></p>
+  <div class="system-container">
+    <p class="admin-sections-headings">
+      Models
+      <button onclick="showForms()" id="postForms" class="add-btn">
+        <i class="fa-solid fa-circle-plus" style="color: #e6e7ea"></i>
+      </button>
+    </p>
+    <div class="system-items" id="brands">
+      <% newModels.forEach(function(newModel){ %>
+      <hr />
+      <ol class="brand-items">
+        <input type="hidden" value="<%= newModel.id %>" name="id" />
+        <li style="font-family: Arial; color: #00adb5"><%= newModel.name %></li>
+        <a href="/brand/edit/<%= newModel.id%>">
+          <Button class="edit-delete-btns">Edit</Button>
+        </a>
+        <form
+          class="delete-btn"
+          action="/deletebrand/<%= newModel.id %>"
+          method="post"
+        >
+          <Button class="delete-form-btn">Delete</Button>
+        </form>
+      </ol>
+      <hr />
+      <% } )%>
     </div>
-    <div class="selectedModelContainer">
-        <!-- <div class="seletedModelItems ">
-            <h4 style="color: #EEEEEE;font-family: 'Playfair Display', serif;">Selected Models</h4>
-            <% chosenModels.forEach(model =>{ %>
-            <hr style="color: #EEEEEE;">
-            <input class="auth-inputs" type="checkbox" name="models" value="<%= model.value %>" checked/>
-            <label style="color: #00adb5" for="models"><%= model.label %></label> 
-            <br>
-           <% })  %>
-        </div> -->
-        <!-- <div class="seletedModelItems ">
-            <h4 style="color: #EEEEEE;font-family: 'Playfair Display', serif;">Other Models</h4>
-            <% newModels.forEach(model=>{ %>
-                <hr style="color: #EEEEEE;">
-                <input class="auth-inputs" type="checkbox" name="models" value="<%= model.id %>"/>
-                <label style="color: #00adb5" for="models"><%= model.name%></label>
-                <br>
-             <% }) %>
-            <br>
-        </div> -->
-    </div>
+  </div>
 </div>
-
-
-
-
-
 <!-- Brands Posted -->
 
 <%- include("../../partials/admin-footer.ejs") %>

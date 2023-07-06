@@ -480,7 +480,7 @@ app.get('/brand/:id/models', function(req,res){
   }
 })
 //Car models Rute
-app.get("/brand/models/:id", function(req,res){
+app.get("/:brandName/models/:id", function(req,res){
   // Model.find({}).then((foundModels)=>{
   //   res.render("./admin/model/models", {newModels:foundModels})
   // }).catch((err)=>{
@@ -497,14 +497,24 @@ app.get("/brand/models/:id", function(req,res){
       Model.find({}).then((foundModels)=>{
         const allmodels = foundModels
         if(foundModels){
-          res.render("./admin/model/models", {newModels:allmodels, chosenModels:modelOptions})
+          res.render("./admin/model/car-models", {newModels:allmodels, chosenModels:modelOptions, currentBrand:foundBrand})
         }
       })
-      
     })
   })
 });
 
+app.get("/models", function(req,res){
+    Model.find({}).then((foundModels)=>{
+    res.render("./admin/model/models", {newModels:foundModels})
+  }).catch((err)=>{
+    console.error(err)
+  });
+})
+
+app.post("/addcar-models", function(req,res){
+  
+})
 app.listen(process.env.PORT, function () {
   console.log("Server is running on port 3000");
 });
